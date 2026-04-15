@@ -4,6 +4,7 @@ import (
 	"add-thanks/internal/domain/repository"
 	"add-thanks/internal/handler"
 	"add-thanks/internal/infra/database"
+	"add-thanks/internal/logger"
 	"add-thanks/internal/router"
 	"add-thanks/internal/usecase/user"
 	"log/slog"
@@ -13,6 +14,7 @@ import (
 )
 
 func main() {
+	logger.NewLogger()
 	db, err := database.NewDB()
 	if err != nil {
 		slog.Error(err.Error())

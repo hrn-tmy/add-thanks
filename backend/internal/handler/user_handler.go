@@ -2,7 +2,7 @@ package handler
 
 import "add-thanks/internal/usecase/user"
 
-type IUserHandler interface {}
+type IUserHandler interface{}
 
 type UserHandler struct {
 	userUC user.IUserUseCase

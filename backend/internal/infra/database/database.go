@@ -23,12 +23,12 @@ type DBConfig struct {
 func NewDB() (*gorm.DB, error) {
 	godotenv.Load()
 	cfg := DBConfig{
-		User: os.Getenv("DB_USER"),
-		Pass: os.Getenv("DB_PASS"),
-		Host: os.Getenv("DB_HOST"),
-		Port: os.Getenv("DB_PORT"),
-		Name: os.Getenv("DB_NAME"),
-		SslMode: os.Getenv("DB_SSLMODE"),
+		User:     os.Getenv("DB_USER"),
+		Pass:     os.Getenv("DB_PASS"),
+		Host:     os.Getenv("DB_HOST"),
+		Port:     os.Getenv("DB_PORT"),
+		Name:     os.Getenv("DB_NAME"),
+		SslMode:  os.Getenv("DB_SSLMODE"),
 		Timezone: os.Getenv("DB_TIMEZONE"),
 	}
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=%s TimeZone=%s", cfg.Host, cfg.User, cfg.Pass, cfg.Name, cfg.Port, cfg.SslMode, cfg.Timezone)

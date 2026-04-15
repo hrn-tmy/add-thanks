@@ -1,0 +1,108 @@
+version: 3.0.0
+info:
+  title: add-thanks API
+paths:
+  /department:
+    post:
+      requestBody:
+        description: 部署登録リクエストボディ
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/createDepartmentRequest"
+      responses:
+        201:
+          description: 部署登録正常レスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/createDepartmentResponse"
+        400:
+          description: 部署登録正常クライアントエラーレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/errorResponse"
+        500:
+          description: 部署登録正常サーバーエラーレスポンス
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/errorResponse"
+
+components:
+  schemas:
+    createDepartmentRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: 部署名
+      required:
+        - name
+    createDepartmentResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          description: 部署レスポンスデータ
+          $ref: "#/components/schemas/createDepartmentResponseData"
+      required:
+        - data
+    createDepartmentResponseData:
+      type: object
+      properties:
+        department:
+          type: object
+          description: 部署レスポンスデータ
+          $ref: "#/components/schemas/createDepartmentResponseDepartmentData"
+      required:
+        - department
+    createDepartmentResponseDepartmentData:
+      type: object
+      properties:
+        department_id:
+          type: string
+          format: uuid
+          description: 部署ID
+        name:
+          type: string
+          description: 部署名
+        created_at:
+          type: string
+          description: 登録日時
+        updated_at:
+          type: string
+          description: 更新日時
+        deleted_at:
+          type: string
+          description: 更新日時
+          nullable: true
+      required:
+        - department_id
+        - name
+        - created_at
+        - updated_at
+        - deleted_at
+
+    errorResponse:
+      type: object
+      properties:
+        errors:
+          type: object
+          description: エラーレスポンスデータ
+          $ref: "#/components/schemas/errorResponseData"
+      required:
+        - errors
+    errorResponseData:
+      type: object
+      properties:
+        code:
+          type: string
+          description: 処理コード
+        message:
+          type: string
+          description: エラーメッセージ
+      required:
+        - code
+        - message

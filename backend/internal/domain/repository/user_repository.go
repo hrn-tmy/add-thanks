@@ -2,9 +2,9 @@ package repository
 
 import "gorm.io/gorm"
 
-type IUserRepository interface {}
+type IUserRepository interface{}
 
-type UserRepository struct{
+type UserRepository struct {
 	db *gorm.DB
 }
 

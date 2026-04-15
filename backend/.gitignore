@@ -3,3 +3,4 @@
 
 /proto
 /tmp
+/internal/infra/migrate/migrate.sh

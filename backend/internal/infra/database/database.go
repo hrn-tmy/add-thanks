@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/joho/godotenv"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -20,6 +21,7 @@ type DBConfig struct {
 
 // NewDB は、DB接続の初期化を実行します
 func NewDB() (*gorm.DB, error) {
+	godotenv.Load()
 	cfg := DBConfig{
 		User: os.Getenv("DB_USER"),
 		Pass: os.Getenv("DB_PASS"),
